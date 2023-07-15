@@ -25,8 +25,10 @@ export default function Products() {
   };
 
   let productsData;
-
-  if (searchBooks.length>0 ) {
+  if(searchBooks.length==0) {
+    productsData = data?.data;
+  }
+  else if (searchBooks.length>0 ) {
     productsData = searchBooks?.filter(
       (item: { status: boolean; Price: number }) =>
         item.status === true && item.Price < priceRange

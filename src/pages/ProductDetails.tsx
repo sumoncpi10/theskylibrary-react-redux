@@ -17,7 +17,10 @@ export default function ProductDetails() {
           <img className="w-[35%] mx-auto" src={product?.imageURL} alt="" />
         </div>
         <div className="w-[50%] space-y-3">
-          <h1 className="text-3xl font-semibold">{product?.Title}</h1>
+          <h1 className="text-4xl font-semibold">{product?.Title}</h1>
+          <h1 className="text-3xl ">Author:  {product?.Author}</h1>
+          <h1 className="text-2xl font-semibold">Genre:  {product?.Genre}</h1>
+          <h1 className="text-xl font-semibold">{product?.Publication_Date}</h1>
           <p className="text-xl">Rating: {product?.Rating}</p>
           <ul className="space-y-1 text-lg">
             {product?.features?.map((feature: string) => (

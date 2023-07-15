@@ -107,7 +107,7 @@ export default function Navbar() {
                   <DropdownMenuTrigger className="outline-none">
                     <Avatar>
                       {firebaseAuth?.currentUser?.email ? (
-                        <AvatarImage src="https://github.com/shadcn.png" />
+                        <AvatarImage src="https://png.pngtree.com/png-vector/20190223/ourmid/pngtree-profile-line-black-icon-png-image_691051.jpg" />
                       ) : (
                         <AvatarImage src="" />
                       )}

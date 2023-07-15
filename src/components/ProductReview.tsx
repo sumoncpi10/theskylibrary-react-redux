@@ -62,7 +62,7 @@ export default function ProductReview({ id }: IProps) {
         {data?.comments?.map((comment: string, index: number) => (
           <div key={index} className="flex gap-3 items-center mb-5">
             <Avatar>
-              <AvatarImage src="https://github.com/shadcn.png" />
+              <AvatarImage src="https://png.pngtree.com/png-vector/20190223/ourmid/pngtree-profile-line-black-icon-png-image_691051.jpg" />
               <AvatarFallback>CN</AvatarFallback>
             </Avatar>
             <p>{comment}</p>
