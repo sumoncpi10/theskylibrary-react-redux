@@ -13,13 +13,14 @@ import { HiOutlineSearch } from 'react-icons/hi';
 import Cart from '../components/Cart';
 import logo from '../assets/images/logos-removebg-preview (1).png';
 import { useAppDispatch, useAppSelector } from '@/redux/hook';
-import { signOut } from 'firebase/auth';
+import { getAuth, signOut } from 'firebase/auth';
 import { auth } from '@/lib/firebase';
 import { setUser } from '@/redux/features/user/userSlice';
 
 export default function Navbar() {
   const { user } = useAppSelector((state) => state.user);
-
+const auth = getAuth();
+console.log(auth?.currentUser);
   const dispatch = useAppDispatch();
 
   const handleLogout = () => {
@@ -66,8 +67,8 @@ export default function Navbar() {
                 <DropdownMenu>
                   <DropdownMenuTrigger className="outline-none">
                     <Avatar>
-                      <AvatarImage src="https://github.com/shadcn.png" />
-                      <AvatarFallback>CN</AvatarFallback>
+                      {auth?.currentUser?.email?<AvatarImage src="https://github.com/shadcn.png" />:<AvatarImage src="" />}
+                      <AvatarFallback>User</AvatarFallback>
                     </Avatar>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent>
