@@ -5,6 +5,10 @@ const productApi = api.injectEndpoints({
     getProducts: builder.query({
       query: () => '/books',
     }),
+    searchProducts: builder.query({
+      query: (text: string) => `/searchBook/${text}`,
+      // providesTags: ['books'],
+    }),
     singleProduct: builder.query({
       query: (id) => `/book/${id}`,
     }),
@@ -26,6 +30,7 @@ const productApi = api.injectEndpoints({
 export const {
   useGetCommentQuery,
   useGetProductsQuery,
+  useSearchProductsQuery,
   usePostCommentMutation,
   useSingleProductQuery,
 } = productApi;

@@ -17,7 +17,7 @@ export default function Products() {
   console.log(data);
   const { toast } = useToast();
 
-  const { priceRange, status } = useAppSelector((state) => state.product);
+  const { priceRange, status,searchBooks } = useAppSelector((state) => state.product);
   const dispatch = useAppDispatch();
 
   const handleSlider = (value: number[]) => {
@@ -26,7 +26,12 @@ export default function Products() {
 
   let productsData;
 
-  if (status) {
+  if (searchBooks.length>0 ) {
+    productsData = searchBooks?.filter(
+      (item: { status: boolean; Price: number }) =>
+        item.status === true && item.Price < priceRange
+    );
+  } else if (status) {
     productsData = data?.data?.filter(
       (item: { status: boolean; Price: number }) =>
         item.status === true && item.Price < priceRange
