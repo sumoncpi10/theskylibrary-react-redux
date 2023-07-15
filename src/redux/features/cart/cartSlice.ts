@@ -26,8 +26,9 @@ const cartSlice = createSlice({
       } else {
         state.products.push({ ...action.payload, quantity: 1 });
       }
-
+      // console.log(action.payload.Price);
       state.total += action.payload.Price;
+      // console.log(state.total);
     },
     removeOne: (state, action: PayloadAction<IProduct>) => {
       const existing = state.products.find(
