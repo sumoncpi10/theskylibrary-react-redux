@@ -4,12 +4,24 @@ import { useSingleProductQuery } from '@/redux/features/products/productApi';
 import { IProduct } from '@/types/globalTypes';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {faTrashAlt,faFileAlt} from '@fortawesome/free-solid-svg-icons'
+import { useAppDispatch } from '@/redux/hook';
+import { addToCart } from '@/redux/features/cart/cartSlice';
+import { toast } from '@/components/ui/use-toast';
+import { getAuth } from 'firebase/auth';
 export default function ProductDetails() {
   const { id } = useParams();
-
+  const firebaseAuth = getAuth();
   const { data: product, isLoading, error } = useSingleProductQuery(id);
   console.log(product);
+  const dispatch = useAppDispatch();
+  const handleAddProduct = (product: IProduct) => {
+    dispatch(addToCart(product));
+    toast({
+      description: 'Product Added',
+    });
+  };
   return (
     <>
       <div className="flex max-w-7xl mx-auto items-center border-b border-gray-300 column">
@@ -27,7 +39,13 @@ export default function ProductDetails() {
               <li key={feature}>{feature}</li>
             ))}
           </ul>
-          <Button>Add to cart</Button>
+          <div className='flex space-between '>
+            <Button className='mx-2' onClick={() => handleAddProduct(product)}>Add to cart</Button>
+            {firebaseAuth?.currentUser?.email ==product?.addBy?<>
+            <Button className='mx-2  text-white bg-purple-700 hover:bg-purple-800 focus:outline-none focus:ring-4 focus:ring-purple-300 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900'><FontAwesomeIcon icon={faFileAlt}></FontAwesomeIcon></Button>
+            <Button className='mx-2 text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300'><FontAwesomeIcon icon={faTrashAlt}></FontAwesomeIcon></Button></>:""
+            }
+          </div>
         </div>
       </div>
       <ProductReview id={id!} />
