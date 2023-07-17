@@ -13,7 +13,9 @@ import { IProduct } from '@/types/globalTypes';
 import { useEffect, useState } from 'react';
 
 export default function Products() {
-  const { data, isLoading, error } = useGetProductsQuery(undefined);
+  const { data, isLoading, error } = useGetProductsQuery(undefined,{
+    refetchOnMountOrArgChange: true,
+  });
   console.log(data);
   const { toast } = useToast();
 
@@ -24,27 +26,19 @@ export default function Products() {
     dispatch(setPriceRange(value[0]));
   };
 
-  let productsData;
-  if(searchBooks.length==0) {
-    productsData = data?.data;
-  }
-  else if (searchBooks.length>0 ) {
-    productsData = searchBooks?.filter(
-      (item: { status: boolean; Price: number }) =>
-        item.status === true && item.Price < priceRange
-    );
-  } else if (status) {
-    productsData = data?.data?.filter(
-      (item: { status: boolean; Price: number }) =>
-        item.status === true && item.Price < priceRange
-    );
-  } else if (priceRange > 0) {
-    productsData = data?.data?.filter(
-      (item: { Price: number }) => item.Price < priceRange
-    );
-  } else {
-    productsData = data?.data;
-  }
+  const [productsData, setProductsData] = useState<IProduct[]>([]);
+  useEffect(() => {
+    // When the component mounts or when data changes, update the productsData state
+    if (searchBooks.length === 0) {
+      setProductsData(data?.data ?? []);
+    } else {
+      const filteredData = searchBooks.filter(
+        (item: { status: boolean; Price: number }) =>
+          item.status === true && item.Price < priceRange
+      );
+      setProductsData(filteredData);
+    }
+  }, [data, searchBooks, priceRange]);
   console.log(productsData);
   return (
     <div className="grid grid-cols-12 max-w-7xl mx-auto relative ">
@@ -75,9 +69,10 @@ export default function Products() {
       </div>
       <div className="col-span-9 grid grid-cols-3 gap-10 pb-20">
         {productsData?.map((product: IProduct) => (
-          <ProductCard key={product?._id} product={product} />
+          <ProductCard key={product?._id} product={product}/>
         ))}
       </div>
     </div>
   );
 }
+

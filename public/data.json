@@ -8,7 +8,7 @@
       "Price": 19.99,
       "Rating": 4.8,
       "imageURL": "https://m.media-amazon.com/images/I/71jLBXtWJWL._AC_UF1000,1000_QL80_.jpg",
-      "status":true
+      "addBy":"sumoncpi10@gmail.com", "status":true
     },
     {
       "_id": 2,
@@ -19,6 +19,7 @@
       "Price": 12.99,
       "Rating": 4.5,
       "imageURL": "https://res.cloudinary.com/bloomsbury-atlas/image/upload/w_568,c_scale/jackets/9781408855652.jpg",
+      "addBy":"sumoncpi10@gmail.com", 
       "status":false
     },
     {
@@ -30,6 +31,7 @@
       "Price": 9.99,
       "Rating": 4.9,
       "imageURL": "https://cdn.britannica.com/21/182021-050-666DB6B1/book-cover-To-Kill-a-Mockingbird-many-1961.jpg",
+      "addBy":"sumoncpi10@gmail.com", 
       "status":true
     },
     {
@@ -41,6 +43,7 @@
       "Price": 11.99,
       "Rating": 4.7,
       "imageURL": "https://static-01.daraz.com.bd/p/d8b2529b026b282f7c17d9613592da32.jpg",
+      "addBy":"sumoncpi10@gmail.com", 
       "status":false
     },
     {
@@ -52,6 +55,7 @@
       "Price": 12.99,
       "Rating": 4.6,
       "imageURL": "https://d28hgpri8am2if.cloudfront.net/book_images/onix/cvr9781982146702/the-great-gatsby-9781982146702_hr.jpg",
+      "addBy":"sumoncpi10@gmail.com", 
       "status":false
     },
     {
@@ -63,6 +67,7 @@
       "Price": 10.99,
       "Rating": 4.5,
       "imageURL": "https://devontrevarrowflaherty.files.wordpress.com/2023/02/pride-and-prejudice.jpg",
+      "addBy":"sumoncpi10@gmail.com", 
       "status":true
     },
     {
@@ -74,6 +79,7 @@
       "Price": 8.99,
       "Rating": 4.4,
       "imageURL": "https://cdn.britannica.com/94/181394-050-2F76F7EE/Reproduction-cover-edition-The-Catcher-in-the.jpg",
+      "addBy":"sumoncpi10@gmail.com", 
       "status":true
     },
     {
@@ -85,6 +91,7 @@
       "Price": 7.99,
       "Rating": 4.2,
       "imageURL": "https://m.media-amazon.com/images/I/81jXwb7ZCML._AC_UF894,1000_QL80_.jpg",
+      "addBy":"sumoncpi10@gmail.com", 
       "status":true
     },
     {
@@ -96,6 +103,7 @@
       "Price": 13.99,
       "Rating": 4.7,
       "imageURL": "https://m.media-amazon.com/images/I/710+HcoP38L._AC_UF1000,1000_QL80_.jpg",
+      "addBy":"sumoncpi10@gmail.com", 
       "status":true
     },
     {
@@ -107,6 +115,7 @@
       "Price": 9.99,
       "Rating": 4.3,
       "imageURL": "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1654371463i/18144590.jpg",
+      "addBy":"sumoncpi10@gmail.com", 
       "status":false
     }
   ]

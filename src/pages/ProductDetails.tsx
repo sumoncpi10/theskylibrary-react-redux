@@ -1,6 +1,6 @@
 import ProductReview from '@/components/ProductReview';
 import { Button } from '@/components/ui/button';
-import { useDeleteProductMutation, useSingleProductQuery } from '@/redux/features/products/productApi';
+import { useDeleteProductMutation, useGetProductsQuery, useSingleProductQuery } from '@/redux/features/products/productApi';
 import { IProduct } from '@/types/globalTypes';
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -15,6 +15,7 @@ export default function ProductDetails() {
   const firebaseAuth = getAuth();
   const { data: product, isLoading, error } = useSingleProductQuery(id);
   console.log(product);
+  // console.log(dataP);
   const dispatch = useAppDispatch();
   const navigate=useNavigate();
   const handleAddProduct = (product: IProduct) => {
@@ -41,7 +42,10 @@ export default function ProductDetails() {
         if(res){
           toast({description:"Book Delete Successfuly"});
           console.log(res);
-          // navigate("/books"); 
+          navigate("/books"); 
+          // setProductsData(prevData => prevData.filter((product: IProduct) => product?._id !== _id));
+
+          // window.location.reload();
         }
       } catch (error) {
         console.error("Error deleting product:", error);
