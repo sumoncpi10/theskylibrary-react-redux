@@ -7,6 +7,7 @@ import {
   useGetCommentQuery,
   usePostCommentMutation,
 } from '@/redux/features/products/productApi';
+import { getAuth } from 'firebase/auth';
 
 interface IProps {
   id: string;
@@ -42,10 +43,11 @@ export default function ProductReview({ id }: IProps) {
   const handleChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
     setInputValue(event.target.value);
   };
-
+const firebaseAuth = getAuth();
   return (
     <div className="max-w-7xl mx-auto mt-5">
-      <form className="flex gap-5 items-center" onSubmit={handleSubmit}>
+      
+      {firebaseAuth?.currentUser?.email?<form className="flex gap-5 items-center" onSubmit={handleSubmit}>
         <Textarea
           className="min-h-[30px]"
           onChange={handleChange}
@@ -57,7 +59,9 @@ export default function ProductReview({ id }: IProps) {
         >
           <FiSend />
         </Button>
-      </form>
+      </form>:""
+      }
+      <h6 className='text-2xl mt-2'>(Reviews)</h6>
       <div className="mt-10">
         {data?.comments?.map((comment: string, index: number) => (
           <div key={index} className="flex gap-3 items-center mb-5">
