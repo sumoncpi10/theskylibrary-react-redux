@@ -68,15 +68,15 @@ export default function Navbar() {
                     type="text"
                     value={searchQuery}
                     onChange={handleSearchQueryChange}
-                    placeholder="Search"
+                    placeholder="Search by Title, Genre, Author"
                     className="py-2 pr-8 pl-3 border border-gray-300 rounded-md focus:outline-none focus:ring focus:border-blue-500"
                   />
-                  <button
+                  {/* <button
                     onClick={handleBookSearch}
                     className="absolute right-3 top-1/2 transform -translate-y-1/2 focus:outline-none"
                   >
                     <HiOutlineSearch size={20} />
-                  </button>
+                  </button> */}
                 </div>
               </li>
               <li>

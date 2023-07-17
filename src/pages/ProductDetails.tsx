@@ -1,9 +1,9 @@
 import ProductReview from '@/components/ProductReview';
 import { Button } from '@/components/ui/button';
-import { useSingleProductQuery } from '@/redux/features/products/productApi';
+import { useDeleteProductMutation, useSingleProductQuery } from '@/redux/features/products/productApi';
 import { IProduct } from '@/types/globalTypes';
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faTrashAlt,faFileAlt} from '@fortawesome/free-solid-svg-icons'
 import { useAppDispatch } from '@/redux/hook';
@@ -16,11 +16,41 @@ export default function ProductDetails() {
   const { data: product, isLoading, error } = useSingleProductQuery(id);
   console.log(product);
   const dispatch = useAppDispatch();
+  const navigate=useNavigate();
   const handleAddProduct = (product: IProduct) => {
     dispatch(addToCart(product));
     toast({
       description: 'Product Added',
     });
+  };
+  const handleUpdateProduct = (_id:any) => {
+    const shouldNavigate = window.confirm("Are you sure you want to update the book?");
+    
+    if (shouldNavigate) {
+      navigate(`/edit-book/${_id}`);
+    }
+  };
+  const [deleteComment] =useDeleteProductMutation();
+  const handleDeleteProduct = async(_id:number) => {
+    const shouldDelete = window.confirm("Are you sure you want to Delete the book?");
+    console.log(_id);
+    if (shouldDelete) {
+      try {
+       
+        const res=await deleteComment(  _id  );
+        if(res){
+          toast({description:"Book Delete Successfuly"});
+          console.log(res);
+          // navigate("/books"); 
+        }
+      } catch (error) {
+        console.error("Error deleting product:", error);
+        toast({
+          description: 'Error deleting product',
+          // status: 'error',
+        });
+      }
+    }
   };
   return (
     <>
@@ -42,8 +72,8 @@ export default function ProductDetails() {
           <div className='flex space-between '>
             <Button className='mx-2' onClick={() => handleAddProduct(product)}>Add to cart</Button>
             {firebaseAuth?.currentUser?.email ==product?.addBy?<>
-            <Button className='mx-2  text-white bg-purple-700 hover:bg-purple-800 focus:outline-none focus:ring-4 focus:ring-purple-300 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900'><FontAwesomeIcon icon={faFileAlt}></FontAwesomeIcon></Button>
-            <Button className='mx-2 text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300'><FontAwesomeIcon icon={faTrashAlt}></FontAwesomeIcon></Button></>:""
+            <Button onClick={() => handleUpdateProduct(product?._id)} className='mx-2  text-white bg-purple-700 hover:bg-purple-800 focus:outline-none focus:ring-4 focus:ring-purple-300 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900'><FontAwesomeIcon icon={faFileAlt}></FontAwesomeIcon></Button>
+            <Button onClick={() => handleDeleteProduct(product?._id)} className='mx-2 text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300'><FontAwesomeIcon icon={faTrashAlt}></FontAwesomeIcon></Button></>:""
             }
           </div>
         </div>
