@@ -18,6 +18,13 @@ const productApi = api.injectEndpoints({
         method: 'DELETE',
       }),
     }),
+    updateProduct: builder.mutation({
+      query: ({ id, data }) => ({
+        url: `/book/${id}`,
+        method: 'PATCH',
+        body: data,
+      }),
+    }),
     postComment: builder.mutation({
       query: ({ id, data }) => ({
         url: `/comment/${id}`,
@@ -38,6 +45,7 @@ export const {
   useGetProductsQuery,
   useSearchProductsQuery,
   useDeleteProductMutation,
+  useUpdateProductMutation,
   usePostCommentMutation,
   useSingleProductQuery,
 } = productApi;
