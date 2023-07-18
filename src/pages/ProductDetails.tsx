@@ -1,8 +1,8 @@
 import ProductReview from '@/components/ProductReview';
 import { Button } from '@/components/ui/button';
-import { useDeleteProductMutation, useGetProductsQuery, useSingleProductQuery } from '@/redux/features/products/productApi';
+import { useDeleteProductMutation, useSingleProductQuery } from '@/redux/features/products/productApi';
 import { IProduct } from '@/types/globalTypes';
-import { useEffect, useState } from 'react';
+// import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faTrashAlt,faFileAlt} from '@fortawesome/free-solid-svg-icons'
@@ -14,7 +14,7 @@ export default function ProductDetails() {
   const { id } = useParams();
   const firebaseAuth = getAuth();
   const { data: product, isLoading, error } = useSingleProductQuery(id);
-  console.log(product);
+  console.log(product,isLoading,error);
   // console.log(dataP);
   const dispatch = useAppDispatch();
   const navigate=useNavigate();

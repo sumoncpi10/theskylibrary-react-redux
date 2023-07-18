@@ -37,7 +37,7 @@ export default function ProductCard({ product }: IProps) {
         <p>Author: {product?.Author}</p>
         <p>Genre: {product?.Genre}</p>
         <p>Rating: {product?.Rating}</p>
-        <p>Publication Date: {product?.Publication_Date}</p>
+        {/* <p>Publication Date: {product?.Publication_Date}</p> */}
         <p className="text-sm">
           Availability: {product?.status ? 'In stock' : 'Out of stock'}
         </p>

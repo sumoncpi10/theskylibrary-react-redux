@@ -6,22 +6,16 @@ import {
   SheetTrigger,
 } from './ui/sheet';
 import {
-  HiMinus,
-  HiOutlinePlus,
-  HiOutlineShoppingCart,
+
   HiOutlineTrash,
 } from 'react-icons/hi';
 import { Button } from './ui/button';
-import { IProduct } from '@/types/globalTypes';
+
 import { useAppDispatch, useAppSelector } from '@/redux/hook';
-import {
-  addToCart,
-  removeFromCart,
-  
-} from '@/redux/features/cart/cartSlice';
+
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { addToWishList, removeFromWishList,removeOne } from '@/redux/features/wishlist/wishListSlice';
+import {  removeFromWishList } from '@/redux/features/wishlist/wishListSlice';
 
 export default function WishList() {
   const { products, total } = useAppSelector((state) => state.wishlist);

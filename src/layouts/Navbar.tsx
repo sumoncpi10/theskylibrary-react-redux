@@ -1,11 +1,11 @@
-import React, { ChangeEvent, useEffect, useState } from 'react';
+import  { ChangeEvent, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { HiOutlineSearch } from 'react-icons/hi';
+// import { HiOutlineSearch } from 'react-icons/hi';
 import { getAuth, signOut } from 'firebase/auth';
-import { auth } from '@/lib/firebase';
+// import { auth } from '@/lib/firebase';
 import { useAppDispatch, useAppSelector } from '@/redux/hook';
 import { setUser } from '@/redux/features/user/userSlice';
-import { useGetProductsQuery, useSearchProductsQuery } from '@/redux/features/products/productApi';
+import {  useSearchProductsQuery } from '@/redux/features/products/productApi';
 import { Avatar, AvatarFallback, AvatarImage } from '../components/ui/avatar';
 import { Button } from '../components/ui/button';
 import {
@@ -19,8 +19,8 @@ import {
 import Cart from '../components/Cart';
 import logo from '../assets/images/logos-removebg-preview (1).png';
 import { setSearchBooks } from '@/redux/features/products/productSlice';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHeart } from '@fortawesome/free-solid-svg-icons';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import WishList from '@/components/WishList';
 
 export default function Navbar() {
@@ -32,7 +32,7 @@ export default function Navbar() {
 
   const { data } = useSearchProductsQuery(searchQuery);
    const stateValue = useAppSelector((state) => state.product);
-   const { searchBooks } = useAppSelector((state) => state.product);
+  //  const { searchBooks } = useAppSelector((state) => state.product);
   console.log(data);
   console.log(stateValue);
   if(data?.data){
@@ -50,11 +50,7 @@ export default function Navbar() {
     setSearchQuery(e.target.value);
   };
 
-  const handleBookSearch = () => {
-    // const { data } = useSearchProductsQuery(searchQuery);
-    // Handle the search query data here
-    // dispatch(product(data?.data));
-  };
+ 
 
   return (
     <nav className="w-full h-16 fixed top backdrop-blur-lg z-10">

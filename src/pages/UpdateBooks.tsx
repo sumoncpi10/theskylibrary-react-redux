@@ -1,25 +1,25 @@
-import ProductReview from '@/components/ProductReview';
+// import ProductReview from '@/components/ProductReview';
 import { Button } from '@/components/ui/button';
-import { useDeleteProductMutation, useGetProductsQuery, usePostCommentMutation, useSingleProductQuery, useUpdateProductMutation } from '@/redux/features/products/productApi';
-import { IProduct } from '@/types/globalTypes';
-import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
+import { useSingleProductQuery, useUpdateProductMutation } from '@/redux/features/products/productApi';
+// import { IProduct } from '@/types/globalTypes';
+import { ChangeEvent, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faTrashAlt,faFileAlt} from '@fortawesome/free-solid-svg-icons'
-import { useAppDispatch } from '@/redux/hook';
-import { addToCart } from '@/redux/features/cart/cartSlice';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+// import {faTrashAlt,faFileAlt} from '@fortawesome/free-solid-svg-icons'
+// import { useAppDispatch } from '@/redux/hook';
+// import { addToCart } from '@/redux/features/cart/cartSlice';
 import { toast } from '@/components/ui/use-toast';
-import { getAuth } from 'firebase/auth';
+// import { getAuth } from 'firebase/auth';
 import { Textarea } from '@/components/ui/textarea';
 import { Input } from '@/components/ui/input';
 export default function UpdateBooks() {
   const { id } = useParams();
-  const firebaseAuth = getAuth();
+  // const firebaseAuth = getAuth();
   const { data: product, isLoading, error } = useSingleProductQuery(id,{refetchOnMountOrArgChange: true});
-  console.log(product);
+  console.log(product,error,isLoading);
   const [updateProducts] =  useUpdateProductMutation();
   // console.log(dataP);
-  const dispatch = useAppDispatch();
+  // const dispatch = useAppDispatch();
   const navigate=useNavigate();
   
 
