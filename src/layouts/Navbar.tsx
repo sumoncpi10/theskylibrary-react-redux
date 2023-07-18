@@ -19,6 +19,9 @@ import {
 import Cart from '../components/Cart';
 import logo from '../assets/images/logos-removebg-preview (1).png';
 import { setSearchBooks } from '@/redux/features/products/productSlice';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeart } from '@fortawesome/free-solid-svg-icons';
+import WishList from '@/components/WishList';
 
 export default function Navbar() {
   const { user } = useAppSelector((state) => state.user);
@@ -101,6 +104,10 @@ export default function Navbar() {
               </li> */}
               <li>
                 <Cart />
+              </li>
+              <li>
+                {/* <Button className='bg-white text-amber-700'><FontAwesomeIcon  icon={faHeart}></FontAwesomeIcon></Button> */}
+                <WishList></WishList>
               </li>
               <li className="ml-5">
                 <DropdownMenu>

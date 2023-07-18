@@ -4,6 +4,9 @@ import { Button } from './ui/button';
 import { Link } from 'react-router-dom';
 import { useAppDispatch } from '@/redux/hook';
 import { addToCart } from '@/redux/features/cart/cartSlice';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBookReader, faCartShopping, faHeart } from '@fortawesome/free-solid-svg-icons';
+import { addToWishList } from '@/redux/features/wishlist/wishListSlice';
 
 interface IProps {
   product: IProduct;
@@ -16,6 +19,12 @@ export default function ProductCard({ product }: IProps) {
     dispatch(addToCart(product));
     toast({
       description: 'Product Added',
+    });
+  };
+  const handleAddToWishlist = (product: IProduct) => {
+    dispatch(addToWishList(product));
+    toast({
+      description: 'Product Added To Wishlist',
     });
   };
   return (
@@ -33,9 +42,17 @@ export default function ProductCard({ product }: IProps) {
           Availability: {product?.status ? 'In stock' : 'Out of stock'}
         </p>
         <p className="text-sm">Price: {product?.Price}</p>
-        <Button variant="default" onClick={() => handleAddProduct(product)}>
-          Add to cart
-        </Button>
+        <div className='flex' title='Add To Cart'>
+          <Button variant="ghost" onClick={() => handleAddProduct(product)}>
+            <FontAwesomeIcon className='text-indigo-950 text-2xl' icon={faCartShopping}></FontAwesomeIcon>
+          </Button>
+          <Button title='Add To Wish List' variant="ghost" onClick={() => handleAddToWishlist(product)}>
+            <FontAwesomeIcon className='text-amber-700 text-2xl' icon={faHeart}></FontAwesomeIcon>
+          </Button>
+          <Button title='Add To Read List' variant="ghost" onClick={() => handleAddProduct(product)}>
+            <FontAwesomeIcon className='text-cyan-600 text-2xl' icon={faBookReader}></FontAwesomeIcon>
+          </Button>
+        </div>
       </div>
     </div>
   );
