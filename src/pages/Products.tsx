@@ -18,7 +18,7 @@ export default function Products() {
   const { data, isLoading, error } = useGetProductsQuery(undefined,{
     refetchOnMountOrArgChange: true,
   });
-  // console.log(data,isLoading,error);
+  console.log(isLoading,error);
   // const { toast } = useToast();
 
   const { searchBooks, status,genre, priceRange,yearRange } = useAppSelector((state) => state.product);

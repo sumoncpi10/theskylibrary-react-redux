@@ -5,7 +5,7 @@ export interface IProduct {
   Price: number;
   Genre: string;
   status: boolean;
-  Publication_Date: Date;
+  Publication_Date?: string;
   imageURL: string;
   Rating?: number;
   quantity?: number;

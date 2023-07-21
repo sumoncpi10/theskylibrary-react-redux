@@ -1,19 +1,19 @@
-import React, { useState, ChangeEvent } from 'react';
+import  { useState, ChangeEvent } from 'react';
 import { Button } from '@/components/ui/button';
-import { Textarea } from '@/components/ui/textarea';
+// import { Textarea } from '@/components/ui/textarea';
 import { Input } from '@/components/ui/input';
-import { useNavigate, useParams } from 'react-router-dom';
-import { toast } from '@/components/ui/use-toast';
-import { useAddProductMutation, usePostCommentMutation, useSingleProductQuery, useUpdateProductMutation } from '@/redux/features/products/productApi';
+import { useNavigate } from 'react-router-dom';
+// import { toast } from '@/components/ui/use-toast';
+import { useAddProductMutation } from '@/redux/features/products/productApi';
 import { IProduct } from '@/types/globalTypes';
-import { useAppDispatch } from '@/redux/hook';
+// import { useAppDispatch } from '@/redux/hook';
 import { getAuth } from 'firebase/auth';
 
 export default function AddNewBook(): JSX.Element {
  const [addProduct] = useAddProductMutation();
   const firebaseAuth = getAuth();
-  const dispatch = useAppDispatch();
-  const { id } = useParams();
+  // const dispatch = useAppDispatch();
+  // const { id } = useParams();
   const navigate = useNavigate();
   const [bookData, setBookData] = useState<IProduct>({
     _id: 0,
@@ -21,7 +21,7 @@ export default function AddNewBook(): JSX.Element {
     Author: '',
     Genre: '',
     Price: 10,
-    Publication_Date: new Date(),
+    Publication_Date: "",
     Rating: 0,
     imageURL: '',
     status: true,
@@ -53,7 +53,7 @@ export default function AddNewBook(): JSX.Element {
     const { Publication_Date, ...rest } = bookData;
    
     const newProduct = { Publication_Date: formattedDate, ...rest };
-    setBookData(newProduct)!;
+    setBookData(newProduct);
   };
 
   function getMonthName(monthNumber: number): string {

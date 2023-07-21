@@ -31,7 +31,7 @@ export default function Navbar() {
   const firebaseAuth = getAuth(); // Rename the variable to avoid conflict with the 'auth' import
 
   const { data } = useSearchProductsQuery(searchQuery);
-   const stateValue = useAppSelector((state) => state.product);
+  //  const stateValue = useAppSelector((state) => state.product);
   //  const { searchBooks } = useAppSelector((state) => state.product);
   // console.log(data);
   // console.log(stateValue);
