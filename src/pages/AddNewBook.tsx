@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button';
 // import { Textarea } from '@/components/ui/textarea';
 import { Input } from '@/components/ui/input';
 import { useNavigate } from 'react-router-dom';
-// import { toast } from '@/components/ui/use-toast';
+import { toast } from '@/components/ui/use-toast';
 import { useAddProductMutation } from '@/redux/features/products/productApi';
 import { IProduct } from '@/types/globalTypes';
 // import { useAppDispatch } from '@/redux/hook';
@@ -31,7 +31,10 @@ export default function AddNewBook(): JSX.Element {
   const handleAddProduct = async () => {
     try {
       await addProduct(bookData);
-      console.log('Book added successfully!');
+      toast({
+      description: 'Book added successfully!!!!',
+    });
+     
       navigate('/books');
     } catch (error) {
       console.error('Error adding book:', error);
