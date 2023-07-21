@@ -9,5 +9,5 @@ export interface IProduct {
   imageURL: string;
   Rating?: number;
   quantity?: number;
-  addBy?: string;
+  addBy?: string | null;
 }

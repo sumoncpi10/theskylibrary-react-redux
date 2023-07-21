@@ -33,8 +33,8 @@ export default function Navbar() {
   const { data } = useSearchProductsQuery(searchQuery);
    const stateValue = useAppSelector((state) => state.product);
   //  const { searchBooks } = useAppSelector((state) => state.product);
-  console.log(data);
-  console.log(stateValue);
+  // console.log(data);
+  // console.log(stateValue);
   if(data?.data){
     dispatch(setSearchBooks(data.data))
   }
@@ -86,6 +86,11 @@ export default function Navbar() {
               <li>
                 <Button variant="link" asChild>
                   <Link to="/books">Books</Link>
+                </Button>
+              </li>
+              <li>
+                <Button variant="link" asChild>
+                  <Link to="/add-new-book">Add New Book</Link>
                 </Button>
               </li>
               <li>

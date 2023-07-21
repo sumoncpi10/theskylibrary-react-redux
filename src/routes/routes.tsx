@@ -9,6 +9,7 @@ import Signup from '@/pages/Signup';
 import ProductDetails from '@/pages/ProductDetails';
 import PrivateRoute from './PrivateRoute';
 import UpdateBooks from '@/pages/UpdateBooks';
+import AddNewBook from '@/pages/AddNewBook';
 
 const routes = createBrowserRouter([
   {
@@ -24,12 +25,24 @@ const routes = createBrowserRouter([
         element: <Products />,
       },
       {
+        path: '/add-new-book',
+        element:   (
+          <PrivateRoute>
+           <AddNewBook />,
+          </PrivateRoute>
+        ),
+      },
+      {
         path: '/product-details/:id',
         element: <ProductDetails />,
       },
       {
         path: '/edit-book/:id',
-        element: <UpdateBooks />,
+        element:  (
+          <PrivateRoute>
+           <UpdateBooks />,
+          </PrivateRoute>
+        ),
       },
       {
         path: '/checkout',
