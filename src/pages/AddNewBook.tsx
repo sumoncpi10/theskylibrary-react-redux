@@ -16,7 +16,7 @@ export default function AddNewBook(): JSX.Element {
   // const { id } = useParams();
   const navigate = useNavigate();
   const [bookData, setBookData] = useState<IProduct>({
-    _id: 0,
+    _id: 110,
     Title: '',
     Author: '',
     Genre: '',
@@ -111,6 +111,16 @@ export default function AddNewBook(): JSX.Element {
             type="text"
             name="Genre"
             value={bookData.Genre}
+            onChange={handleChange}
+          />
+        </div>
+        <div>
+          <p className="font-bold">Price: </p>
+          <Input
+            className="mb-3"
+            type="text"
+            name="Genre"
+            value={bookData.Price}
             onChange={handleChange}
           />
         </div>
