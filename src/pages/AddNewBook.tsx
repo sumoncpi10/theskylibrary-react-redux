@@ -16,7 +16,7 @@ export default function AddNewBook(): JSX.Element {
   // const { id } = useParams();
   const navigate = useNavigate();
   const [bookData, setBookData] = useState<IProduct>({
-    _id: 110,
+    _id: 1001,
     Title: '',
     Author: '',
     Genre: '',
